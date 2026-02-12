@@ -54,15 +54,15 @@ if(form){
   document.body.appendChild(bd);
   bd.style.display='flex';
 
-  function close(){
+  function closeGate(){
     bd.style.display='none';
     bd.remove();
   }
 
   const yes=bd.querySelector('#age-yes');
   const no=bd.querySelector('#age-no');
-  if(yes) yes.addEventListener('click', close);
-  if(no) no.addEventListener('click', close);
+  if(yes) yes.addEventListener('click', closeGate);
+  if(no) no.addEventListener('click', closeGate);
 })();
 
 (function(){

@@ -61,8 +61,8 @@ if(form){
 
   const yes=bd.querySelector('#age-yes');
   const no=bd.querySelector('#age-no');
-  if(yes) yes.addEventListener('click',closeGate);
-  if(no) no.addEventListener('click',closeGate);
+  if(yes) yes.addEventListener('click', close);
+  if(no) no.addEventListener('click', close);
 })();
 
 (function(){

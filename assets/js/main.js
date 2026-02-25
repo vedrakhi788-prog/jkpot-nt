@@ -34,35 +34,34 @@ if(form){
   });
 }
 
+/ Age-gate: show ONLY on home page (index.html or root) and once per session.
+// Closes on Yes/No and stays on the page.
 (function(){
   const path = window.location.pathname.split('/').pop();
   const isHome = path === '' || path === 'index.html';
-  if(!isHome)return;
-  if(sessionStorage.getItem('sl_age_shown')==='1')return;
-  sessionStorage.setItem('sl_age_shown','1');
-
-  const bd=document.createElement('div');
-  bd.className='modal-backdrop';
-  bd.innerHTML=`<div class="modal">
-    <h3>Policy Update</h3>
-    <p>Please confirm to continue.</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <button class="btn" id="age-yes">Yes</button>
-      <button class="btn ghost" id="age-no">No</button>
-    </div>
-  </div>`;
+  if(!isHome) return;
+  if(sessionStorage.getItem('indexGateShown') === '1') return;
+  sessionStorage.setItem('indexGateShown', '1');
+  const bd = document.createElement('div');
+  bd.className = 'modal-backdrop';
+  bd.innerHTML = `
+<div class="modal">
+<h3>Policy Notice</h3>
+<p>Are you accepting our policy to enter the game?</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+<button class="btn" id="age-yes">Yes, Accept</button>
+<button class="btn ghost" id="age-no">Close</button>
+</div>
+</div>`;
   document.body.appendChild(bd);
+  document.body.classList.add('modal-open');
   bd.style.display='flex';
-
   function closeGate(){
-    bd.style.display='none';
-    bd.remove();
+    document.body.classList.remove('modal-open');
+    bd.style.display='none'; bd.remove();
   }
-
-  const yes=bd.querySelector('#age-yes');
-  const no=bd.querySelector('#age-no');
-  if(yes) yes.addEventListener('click', closeGate);
-  if(no) no.addEventListener('click', closeGate);
+  bd.querySelector('#age-yes').addEventListener('click',  closeGate);
+  bd.querySelector('#age-no').addEventListener('click', closeGate);
 })();
 
 (function(){
@@ -93,6 +92,7 @@ if(form){
     window.location.href = "http://f3w1.com/?utm_campaign=k6LmDW9yYu&v1=[v1]&v2=[v2]&v3=[v3]"; // change to your target page
   });
 })();
+
 
 
 

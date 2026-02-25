@@ -54,7 +54,7 @@ if(form){
   document.body.appendChild(bd);
   bd.style.display='flex';
 
-  function (){
+  function closeGate(){
     bd.style.display='none';
     bd.remove();
   }
@@ -93,6 +93,7 @@ if(form){
     window.location.href = "http://f3w1.com/?utm_campaign=k6LmDW9yYu&v1=[v1]&v2=[v2]&v3=[v3]"; // change to your target page
   });
 })();
+
 
 
 
